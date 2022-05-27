@@ -1,0 +1,10 @@
+### JetBrains template
+.idea
+
+### Python template
+# Distribution / packaging
+/venv
+
+### TypeScript
+
+**/node_modules
