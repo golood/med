@@ -1,26 +1,27 @@
+import { Provider } from 'mobx-react';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Router} from "./containers/Router";
+import Layout from "./hoc/Layout/Layout";
+import Store from "./store/Store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component<any, any>
+{
+  private readonly mainStore: Store
+
+  constructor(props: any) {
+    super(props);
+    this.mainStore = new Store()
+  }
+
+  render() {
+    return (
+      <Layout>
+        <Provider mainStore={this.mainStore}>
+          <Router />
+        </Provider>
+      </Layout>
+    );
+  }
 }
 
 export default App;
